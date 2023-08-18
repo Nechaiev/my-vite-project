@@ -3,7 +3,8 @@ import UserPage from "../pages/UserPage.vue";
 import About from "../pages/About.vue";
 import PostIdPage from "../pages/PostIdPage.vue"
 import { createRouter, createWebHistory } from "vue-router";
-
+import AuthLayout from '../components/common/AuthLayout.vue';
+ 
 const routes = [
   {
     path: '/',
@@ -11,6 +12,9 @@ const routes = [
   },
   {
     path: '/posts',
+    meta: {
+      layout: AuthLayout
+    },
     component: UserPage
   },
   {
