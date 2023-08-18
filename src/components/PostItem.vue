@@ -7,7 +7,7 @@
       <div><strong>Опис:</strong> {{ post.body }}</div>
     </div>
     <div class="post__btns flex">
-      <my-button @click="$emit('remove', post)">Відкрити</my-button>
+      <my-button @click="$router.push(`/posts/${post.id}`)">Відкрити</my-button>
       <my-button @click="$emit('remove', post)">Видалити</my-button>
     </div>
   </div>
