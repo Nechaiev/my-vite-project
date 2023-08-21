@@ -9,11 +9,7 @@
       placeholder="Пошук..."
     />
     <div class="my-15 flex justify-between">
-      <my-button
-        
-        @click="showDialog"
-        >Створити пост</my-button
-      >
+      <my-button type="primary" @click="showDialog">Створити пост</my-button>
       <my-select
         :model-value="selectedSort"
         @update:model-value="setSelectedSort"
