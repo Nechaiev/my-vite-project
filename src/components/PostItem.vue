@@ -1,5 +1,7 @@
 <template>
-  <div class="post">
+  <div
+    class="flex items-center justify-between p-3.5 mt-3.5 border-2 border-solid border-blue-500"
+  >
     <div>
       <div><strong>userId:</strong> {{ post.userId }}</div>
       <div><strong>ID:</strong> {{ post.id }}</div>
@@ -26,12 +28,12 @@ export default {
 </script>
 
 <style scoped>
-.post {
+/* .post {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px;
   border: 2px solid royalblue;
   margin-top: 15px;
-}
+} */
 </style>

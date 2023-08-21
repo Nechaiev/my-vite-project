@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Смерть москалям</h1>
+    <h1 class="text-2xl">Смерть москалям</h1>
   </div>
 </template>
 

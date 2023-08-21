@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent>
+  <form class="flex flex-col" @submit.prevent>
     <h2>Створення поста</h2>
     <my-input
       v-focus
@@ -15,8 +15,8 @@
       placeholder="Опис поста"
     />
     <my-button
+      
       @click="createPost"
-      class="btn"
       style="align-self: flex-end; margin-top: 15px"
     >
       Створити
@@ -49,8 +49,8 @@ export default {
 </script>
 
 <style>
-form {
+/* form {
   display: flex;
   flex-direction: column;
-}
+} */
 </style>

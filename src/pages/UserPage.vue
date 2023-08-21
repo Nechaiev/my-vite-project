@@ -2,8 +2,12 @@
   <div>
     <h1 class="p-2 bg-sky-600 text-2xl">Сторінка з постаи</h1>
     <my-input class="" v-focus v-model="searchQuery" placeholder="Пошук..." />
-    <div class="app__btns">
-      <my-button @click="showDialog">Створити пост</my-button>
+    <div class="my-15 flex justify-between">
+      <my-button
+        
+        @click="showDialog"
+        >Створити пост</my-button
+      >
       <my-select
         v-model="selectedSort"
         :options="sortOptions"
@@ -21,7 +25,7 @@
       v-if="!isPostLoading"
     />
     <div v-else>Заванаження...</div>
-    <div v-intersection="loadMorePosts" class="observer"></div>
+    <div v-intersection="loadMorePosts" class="h-30 bg-blue-500"></div>
     <!-- <div class="flex mt-4">
       <div
         v-for="pageNumber in totalPage"
@@ -165,10 +169,10 @@ export default {
 </script>
 
 <style scoped>
-.observer {
+/* .observer {
   height: 30px;
   background: #719edd;
-}
+} */
 /* .current-page {
   border: 2px solid red;
 } */
@@ -181,9 +185,9 @@ export default {
 .app {
   padding: 20px;
 } */
-.app__btns {
+/* .app__btns {
   margin: 15px 0;
   display: flex;
   justify-content: space-between;
-}
+} */
 </style>

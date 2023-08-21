@@ -8,7 +8,7 @@
       @remove="$emit('remove', post)"
     />
   </div>
-  <h2 v-else style="color: red;">Список постів пуст</h2>
+  <h2 v-else class="text-red-800">Список постів пуст</h2>
 </template>
 
 <script>

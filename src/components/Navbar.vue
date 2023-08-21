@@ -1,10 +1,26 @@
 <template>
   <div class="h-16 bg-cyan-950 shadow-lg flex items-center px-15">
-    <div @click="$router.push('/')" class="text-xl">My blog</div>
+    <div
+      @click="$router.push('/')"
+      class="text-3xl font-bold text-cyan-400 pl-5"
+    >
+      My blog
+    </div>
     <div class="ml-auto">
-      <my-button @click="$router.push('/posts')" class="ml-5">Пости</my-button>
-      <my-button @click="$router.push('/about')" class="ml-5"
+      <my-button
+        @click="$router.push('/posts')"
+        
+        >Пости</my-button
+      >
+      <my-button
+        @click="$router.push('/about')"
+        
         >Про блог</my-button
+      >
+      <my-button
+        @click="$router.push('/store')"
+        
+        >Store</my-button
       >
     </div>
   </div>
