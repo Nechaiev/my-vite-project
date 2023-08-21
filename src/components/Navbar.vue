@@ -7,19 +7,11 @@
       My blog
     </div>
     <div class="ml-auto">
-      <my-button
-        @click="$router.push('/posts')"
-        
-        >Пости</my-button
-      >
-      <my-button
-        @click="$router.push('/about')"
-        
+      <my-button @click="$router.push('/posts')">Пости</my-button>
+      <my-button @click="$router.push('/about')" type="secondary"
         >Про блог</my-button
       >
-      <my-button
-        @click="$router.push('/store')"
-        
+      <my-button @click="$router.push('/store')" type="primary"
         >Store</my-button
       >
     </div>
