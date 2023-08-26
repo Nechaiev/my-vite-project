@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Сторінка поста з ID: {{ $route.params.id }}</h1>
+    <h1>Post page from ID: {{ $route.params.id }}</h1>
   </div>
 </template>
 

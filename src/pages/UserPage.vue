@@ -1,13 +1,9 @@
 <template>
   <div>
-    <h1 class="p-2 bg-sky-600 text-2xl">Сторінка з постаи</h1>
+    <h1 class="p-2 bg-sky-600 text-2xl">Page from the post</h1>
     <my-input class="" v-focus v-model="searchQuery" placeholder="Пошук..." />
     <div class="my-15 flex justify-between">
-      <my-button
-        
-        @click="showDialog"
-        >Створити пост</my-button
-      >
+      <my-button @click="showDialog">Create post</my-button>
       <my-select
         v-model="selectedSort"
         :options="sortOptions"
@@ -20,29 +16,18 @@
     </my-dialog>
 
     <post-list
-      :posts="sortedAndSearchedPosts"
+      :posts="posts || []"
       @remove="removePost"
+      
       v-if="!isPostLoading"
     />
-    <div v-else>Заванаження...</div>
+    <div v-else>Loading...</div>
     <div v-intersection="loadMorePosts" class="h-30 bg-blue-500"></div>
-    <!-- <div class="flex mt-4">
-      <div
-        v-for="pageNumber in totalPage"
-        :key="pageNumber"
-        class="p-2 border border-solid border-black"
-        :class="{
-          'current-page': page === pageNumber,
-        }"
-        @click="chengePage(pageNumber)"
-      >
-        {{ pageNumber }}
-      </div>
-    </div> -->
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from "vue";
 import MyButton from "../components/UI/MyButton.vue";
 import PostForm from "../components/PostForm.vue";
 import PostList from "../components/PostList.vue";
@@ -50,122 +35,85 @@ import MySelect from "../components/UI/MySelect.vue";
 import MyInput from "../components/UI/MyInput.vue";
 import axios from "axios";
 
-export default {
-  components: {
-    MyInput,
-    MyButton,
-    PostForm,
-    PostList,
-    MySelect,
-  },
-  data() {
-    return {
-      posts: [],
-      dialogVisible: false,
-      isPostLoading: false,
-      searchQuery: "",
-      selectedSort: "",
-      page: 1,
-      limit: 10,
-      totalPage: 0,
-      sortOptions: [
-        { value: "title", name: "По назві" },
-        { value: "body", name: "По опису" },
-      ],
-    };
-  },
-  methods: {
-    createPost(post) {
-      this.posts.push(post);
-      this.dialogVisible = false;
-    },
-    removePost(post) {
-      this.posts = this.posts.filter((p) => p.id !== post.id);
-    },
-    showDialog() {
-      this.dialogVisible = true;
-    },
-    // chengePage(pageNumber) {
-    //   this.page = pageNumber;
-    // },
-    async fetchPosts() {
-      try {
-        this.isPostLoading = true;
+const posts = ref([]);
+const dialogVisible = ref(false);
+const isPostLoading = ref(false);
+const searchQuery = ref("");
+const selectedSort = ref("");
+const page = ref(1);
+const limit = ref(10);
+const totalPage = ref(0);
 
-        const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/posts",
-          {
-            params: {
-              _page: this.page,
-              _limit: this.limit,
-            },
-          }
-        );
-        this.totalPage = Math.ceil(
-          response.headers["x-total-count"] / this.limit
-        );
-        this.posts = response.data;
-        this.isPostLoading = false;
-      } catch (error) {
-        alert("Помилка");
-      } finally {
-        this.isPostLoading = false;
-      }
-    },
-    async loadMorePosts() {
-      try {
-        this.page += 1;
+const sortOptions = [
+  { value: "title", name: "По назві" },
+  { value: "body", name: "По опису" },
+];
 
-        const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/posts",
-          {
-            params: {
-              _page: this.page,
-              _limit: this.limit,
-            },
-          }
-        );
-        this.totalPage = Math.ceil(
-          response.headers["x-total-count"] / this.limit
-        );
-        this.posts = [...this.posts, ...response.data];
-      } catch (error) {
-        alert("Помилка");
-      }
-    },
-  },
-  mounted() {
-    this.fetchPosts();
-    // const options = {
-    //   rootMargin: "0px",
-    //   threshold: 1.0,
-    // };
-    // const callback = (entries, observer) => {
-    //   if (entries[0].isIntersecting && this.page < this.totalPage) {
-    //     this.loadMorePosts();
-    //   }
-    // };
-    // const observer = new IntersectionObserver(callback, options);
-    // observer.observe(this.$refs.observer);
-  },
-  computed: {
-    sortedPost() {
-      return [...this.posts].sort((post1, post2) =>
-        post1[this.selectedSort]?.localeCompare(post2[this.selectedSort])
-      );
-    },
-    sortedAndSearchedPosts() {
-      return this.sortedPost.filter((post) =>
-        post.title.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-    },
-  },
-  watch: {
-    // page() {
-    //   this.fetchPosts();
-    // }
-  },
+const createPost = (post) => {
+  posts.value.push(post);
+  dialogVisible.value = false;
 };
+
+
+
+const removePost = (post) => {
+  posts.value = posts.value.filter((p) => p.id !== post.id);
+};
+
+const showDialog = () => {
+  dialogVisible.value = true;
+};
+
+const fetchPosts = async () => {
+  try {
+    isPostLoading.value = true;
+
+    const response = await axios.get(
+      "https://jsonplaceholder.typicode.com/posts",
+      {
+        params: {
+          _page: page.value,
+          _limit: limit.value,
+        },
+      }
+    );
+    totalPage.value = Math.ceil(
+      response.headers["x-total-count"] / limit.value
+    );
+    posts.value = response.data;
+    isPostLoading.value = false;
+  } catch (error) {
+    alert("Помилка");
+  } finally {
+    isPostLoading.value = false;
+  }
+};
+
+const loadMorePosts = async () => {
+  try {
+    page.value += 1;
+
+    const response = await axios.get(
+      "https://jsonplaceholder.typicode.com/posts",
+      {
+        params: {
+          _page: page.value,
+          _limit: limit.value,
+        },
+      }
+    );
+    totalPage.value = Math.ceil(
+      response.headers["x-total-count"] / limit.value
+    );
+    posts.value = [...posts.value, ...response.data];
+  } catch (error) {
+    alert("Помилка");
+  }
+};
+
+onMounted(() => {
+  fetchPosts();
+});
 </script>
 
 <style scoped>

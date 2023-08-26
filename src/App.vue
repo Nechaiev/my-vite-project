@@ -1,15 +1,13 @@
 <template>
-  <navbar></navbar>
-  <div class="app p-5">
-    <router-view></router-view>
-  </div>
+  <App-layout />
 </template>
 
 <script>
-import Navbar from "./components/Navbar.vue";
+import AppLayout from "./components/common/AppLayout.vue";
+
 export default {
   components: {
-    Navbar,
+    AppLayout,
   },
 };
 </script>

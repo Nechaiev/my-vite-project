@@ -1,7 +1,6 @@
+
 <template>
-  <div
-    class="flex items-center justify-between p-3.5 mt-3.5 border-2 border-solid border-blue-500"
-  >
+  <div class="flex items-center justify-between p-3.5 mt-3.5 border-2 border-solid border-blue-500">
     <div>
       <div><strong>userId:</strong> {{ post.userId }}</div>
       <div><strong>ID:</strong> {{ post.id }}</div>
@@ -9,20 +8,37 @@
       <div><strong>Опис:</strong> {{ post.body }}</div>
     </div>
     <div class="post__btns flex">
-      <my-button @click="$router.push(`/posts/${post.id}`)">Відкрити</my-button>
-      <my-button @click="$emit('remove', post)">Видалити</my-button>
+      <my-button @click="redirectToPost">Open</my-button>
+      <my-button @click="removePost">Remove</my-button>
     </div>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
-  components: {},
+  name: "PostItem",
   props: {
     post: {
       type: Object,
       required: true,
     },
+  },
+  setup(props, { emit }) {
+    // Define methods
+    const redirectToPost = () => {
+      emit("routerPush", `/posts/${props.post.id}`);
+    };
+
+    const removePost = () => {
+      emit("remove", props.post);
+    };
+
+    return {
+      redirectToPost,
+      removePost,
+    };
   },
 };
 </script>
