@@ -7,38 +7,34 @@ import UserPageComposition from "../pages/UserPageComposition.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
+
   {
     path: '/',
-    component: Layout,
-    children: [
-      {
-        path: '/',
-        component: Main,
+    component: Main,
 
-      },
-      {
-        path: '/posts',
-        component: UserPage,
+  },
+  {
+    path: '/posts',
+    component: UserPage,
 
-      },
-      {
-        path: '/about',
-        component: About,
+  },
+  {
+    path: '/about',
+    component: About,
 
-      },
-      {
-        path: '/posts/:id',
-        component: PostIdPage,
+  },
+  {
+    path: '/posts/:id',
+    component: PostIdPage,
 
-      },
-      {
-        path: '/composition',
-        component: UserPageComposition,
+  },
+  {
+    path: '/composition',
+    component: UserPageComposition,
 
-      },
-    ]
   },
 ];
+
 
 const router = createRouter({
   routes,
