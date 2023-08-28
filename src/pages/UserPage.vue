@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div >
     <h1 class="p-2 bg-blue-200 text-sky-900 text-3xl">Page from the post</h1>
-    <my-input class="" v-focus v-model="searchQuery" placeholder="Пошук..." />
+    <my-input class="" v-focus v-model="searchQuery" placeholder="Search..." />
     <div class="my-15 flex justify-between">
       <my-button class="ml-0" @click="showDialog">Create post</my-button>
       <my-select
@@ -44,8 +44,8 @@ const limit = ref(10);
 const totalPage = ref(0);
 
 const sortOptions = [
-  { value: "title", name: "По назві" },
-  { value: "body", name: "По опису" },
+  { value: "title", name: "By name" },
+  { value: "body", name: "By description" },
 ];
 
 const createPost = (post) => {
@@ -114,25 +114,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* .observer {
-  height: 30px;
-  background: #719edd;
-} */
-/* .current-page {
-  border: 2px solid red;
-} */
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-/* 
-.app {
-  padding: 20px;
-} */
-/* .app__btns {
-  margin: 15px 0;
-  display: flex;
-  justify-content: space-between;
-} */
+
 </style>
