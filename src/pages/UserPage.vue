@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1 class="p-2 bg-sky-600 text-2xl">Page from the post</h1>
+    <h1 class="p-2 bg-blue-200 text-sky-900 text-3xl">Page from the post</h1>
     <my-input class="" v-focus v-model="searchQuery" placeholder="Пошук..." />
     <div class="my-15 flex justify-between">
-      <my-button @click="showDialog">Create post</my-button>
+      <my-button class="ml-0" @click="showDialog">Create post</my-button>
       <my-select
         v-model="selectedSort"
         :options="sortOptions"
-        class="border-solid border-sky-600 border-2 rounded-sm"
+        class="border-solid border-blue-500 border-2 rounded-sm"
       />
     </div>
 
@@ -18,7 +18,6 @@
     <post-list
       :posts="posts || []"
       @remove="removePost"
-      
       v-if="!isPostLoading"
     />
     <div v-else>Loading...</div>
@@ -53,8 +52,6 @@ const createPost = (post) => {
   posts.value.push(post);
   dialogVisible.value = false;
 };
-
-
 
 const removePost = (post) => {
   posts.value = posts.value.filter((p) => p.id !== post.id);

@@ -9,7 +9,7 @@
     </div>
     <div class="post__btns flex">
       <my-button @click="redirectToPost">Open</my-button>
-      <my-button @click="removePost">Remove</my-button>
+      <my-button type="secondary" @click="removePost">Remove</my-button>
     </div>
   </div>
 </template>
