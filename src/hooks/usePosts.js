@@ -16,7 +16,7 @@ export function usePosts(limit) {
       totalPages.value = Math.ceil(response.headers['x-total-count'] / limit)
       posts.value = response.data;
     } catch (e) {
-      alert('Ошибка')
+      alert('Error')
     } finally {
       isPostsLoading.value = false;
     }
