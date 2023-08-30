@@ -1,11 +1,12 @@
-
 <template>
-  <div class="flex items-center justify-between p-3.5 mt-3.5 border-2 border-solid border-blue-500">
+  <div
+    class="flex items-center justify-between p-3.5 mt-3.5 border-2 border-solid border-blue-500"
+  >
     <div>
       <div><strong>userId:</strong> {{ post.userId }}</div>
       <div><strong>ID:</strong> {{ post.id }}</div>
-      <div><strong>Назва:</strong> {{ post.title }}</div>
-      <div><strong>Опис:</strong> {{ post.body }}</div>
+      <div><strong>Name:</strong> {{ post.title }}</div>
+      <div><strong>Description:</strong> {{ post.body }}</div>
     </div>
     <div class="post__btns flex">
       <my-button @click="redirectToPost">Open</my-button>
@@ -43,6 +44,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
