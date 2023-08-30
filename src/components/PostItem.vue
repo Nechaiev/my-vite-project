@@ -8,7 +8,7 @@
       <div><strong>Name:</strong> {{ post.title }}</div>
       <div><strong>Description:</strong> {{ post.body }}</div>
     </div>
-    <div class="post__btns flex">
+    <div class="flex">
       <my-button @click="redirectToPost">Open</my-button>
       <my-button type="secondary" @click="removePost">Remove</my-button>
     </div>

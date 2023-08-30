@@ -2,7 +2,7 @@
   <div>
     <h1 class="p-2 bg-sky-600 text-2xl">Page from the post</h1>
 
-    <my-input class="" v-focus v-model="searchQuery" placeholder="Пошук..." />
+    <my-input class="" v-focus v-model="searchQuery" placeholder="Search..." />
     <div class="my-15 flex justify-between">
       <my-button>Create post</my-button>
       <my-select
@@ -22,16 +22,15 @@
 </template>
 
 <script>
-import MyButton from "../components/UI/MyButton.vue";
-import PostForm from "../components/PostForm.vue";
-import PostList from "../components/PostList.vue";
-import MySelect from "../components/UI/MySelect.vue";
-import MyInput from "../components/UI/MyInput.vue";
-import { usePosts } from "../hooks/usePosts";
-import useSortedPosts from "../hooks/useSortedPosts";
-import useSortedAndSearchedPosts from "../hooks/useSortedAndSearchedPosts";
-import axios from "axios";
-import { ref } from "vue";
+import MyButton from "@/components/UI/MyButton.vue";
+import PostForm from "@/components/PostForm.vue";
+import PostList from "@/components/PostList.vue";
+import MySelect from "@/components/UI/MySelect.vue";
+import MyInput from "@/components/UI/MyInput.vue";
+import { usePosts } from "@/hooks/usePosts";
+import useSortedPosts from "@/hooks/useSortedPosts";
+import useSortedAndSearchedPosts from "@/hooks/useSortedAndSearchedPosts";
+
 
 export default {
   components: {
@@ -45,8 +44,8 @@ export default {
     return {
       dialogVisible: false,
       sortOptions: [
-        { value: "title", name: "По назві" },
-        { value: "body", name: "По опису" },
+        { value: "title", name: "By name" },
+        { value: "body", name: "By description" },
       ],
     };
   },

@@ -1,9 +1,9 @@
-import Layout from "../components/common/AppLayout.vue"
-import Main from "../pages/Main.vue";
-import UserPage from "../pages/UserPage.vue";
-import About from "../pages/About.vue";
-import PostIdPage from "../pages/PostIdPage.vue";
-import UserPageComposition from "../pages/UserPageComposition.vue";
+import Layout from "@/components/common/AppLayout.vue"
+import Main from "@/pages/Main.vue";
+import UserPage from "@/pages/UserPage.vue";
+import About from "@/pages/About.vue";
+import PostIdPage from "@/pages/PostIdPage.vue";
+import UserPageComposition from "@/pages/UserPageComposition.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [

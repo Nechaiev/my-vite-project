@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import AppLayout from "./components/common/AppLayout.vue";
+import AppLayout from "@/components/common/AppLayout.vue";
 
 export default {
   components: {

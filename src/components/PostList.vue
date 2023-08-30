@@ -1,4 +1,3 @@
-
 <template>
   <div v-if="posts && posts.length > 0">
     <h3 class="text-2xl">List of users</h3>
@@ -7,7 +6,6 @@
       :key="post.id"
       :post="post"
       @remove="removePost(post)"
-      
       @routerPush="redirectToPost(post.id)"
     />
   </div>
@@ -15,9 +13,9 @@
 </template>
 
 <script>
-import router from "../router/router"; 
+import router from "@/router/router";
 
-import PostItem from "./PostItem.vue";
+import PostItem from "@/components/PostItem.vue";
 import { onMounted, ref, watch } from "vue";
 
 export default {
@@ -38,7 +36,7 @@ export default {
       emit("remove", post);
     };
     const redirectToPost = (postId) => {
-      // Выполнить переход на страницу с постом с использованием маршрутизатора
+      // Go to the page with the post using a router
       router.push(`/posts/${postId}`);
     };
 

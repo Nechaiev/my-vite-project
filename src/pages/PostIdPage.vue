@@ -28,7 +28,7 @@ export default {
         );
         post.value = response.data;
       } catch (error) {
-        console.error("Ошибка при загрузке данных:", error);
+        console.error("Error loading data:", error);
       }
     };
 

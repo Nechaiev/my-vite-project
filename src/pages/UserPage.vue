@@ -27,11 +27,11 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import MyButton from "../components/UI/MyButton.vue";
-import PostForm from "../components/PostForm.vue";
-import PostList from "../components/PostList.vue";
-import MySelect from "../components/UI/MySelect.vue";
-import MyInput from "../components/UI/MyInput.vue";
+import MyButton from "@/components/UI/MyButton.vue";
+import PostForm from "@/components/PostForm.vue";
+import PostList from "@/components/PostList.vue";
+import MySelect from "@/components/UI/MySelect.vue";
+import MyInput from "@/components/UI/MyInput.vue";
 import axios from "axios";
 
 const posts = ref([]);
@@ -80,7 +80,7 @@ const fetchPosts = async () => {
     posts.value = response.data;
     isPostLoading.value = false;
   } catch (error) {
-    alert("Помилка");
+    alert("Error");
   } finally {
     isPostLoading.value = false;
   }
@@ -104,7 +104,7 @@ const loadMorePosts = async () => {
     );
     posts.value = [...posts.value, ...response.data];
   } catch (error) {
-    alert("Помилка");
+    alert("Error");
   }
 };
 
@@ -113,6 +113,3 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
-
-</style>
