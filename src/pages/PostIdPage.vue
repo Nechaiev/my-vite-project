@@ -57,7 +57,7 @@ export default {
 <script>
 import { onMounted } from "vue";
 import { useRoute } from "vue-router";
-import usePostFetcher from "@/components/PostFetcher.vue";
+import usePostFetcher from "@/composables/postFetcher.vue";
 
 export default {
   setup() {
