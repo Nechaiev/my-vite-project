@@ -30,7 +30,7 @@ import MyInput from "@/components/UI/MyInput.vue";
 import { usePosts } from "@/hooks/usePosts";
 import useSortedPosts from "@/hooks/useSortedPosts";
 import useSortedAndSearchedPosts from "@/hooks/useSortedAndSearchedPosts";
-
+import useErrorHandlingAndLoading from "@/hooks/useErrorHandlingAndLoading";
 
 export default {
   components: {
@@ -50,11 +50,14 @@ export default {
     };
   },
   setup(props) {
+    const { isLoading, handleError, startLoading, toast } =
+      useErrorHandlingAndLoading();
     const { posts, totalPages, isPostLoading } = usePosts(10);
     const { sortedPosts, selectedSort } = useSortedPosts(posts);
     const { searchQuery, sortedAndSearchedPosts } =
       useSortedAndSearchedPosts(sortedPosts);
     return {
+      isLoading,
       posts,
       totalPages,
       isPostLoading,
