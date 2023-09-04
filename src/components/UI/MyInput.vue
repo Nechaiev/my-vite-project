@@ -39,10 +39,5 @@ export default {
 
 
 <style>
-/* .input {
-  width: auto;
-  border: 2px solid royalblue;
-  padding: 10px;
-  margin-top: 15px;
-} */
+
 </style>

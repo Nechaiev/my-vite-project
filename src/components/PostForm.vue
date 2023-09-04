@@ -2,8 +2,8 @@
 <template>
   <form class="flex flex-col" @submit.prevent>
     <h2>Creating a post</h2>
-    <my-input v-focus v-model="post.title" class="input" type="text" placeholder="Назва поста" />
-    <my-input v-model="post.body" class="input" type="text" placeholder="Опис поста" />
+    <my-input v-focus v-model="post.title" class="" type="text" placeholder="Name of the post" />
+    <my-input v-model="post.body" class="" type="text" placeholder="Post description" />
     <my-button @click="createPost" style="align-self: flex-end; margin-top: 15px">Create</my-button>
   </form>
 </template>
@@ -39,8 +39,5 @@ export default {
 </script>
 
 <style>
-/* form {
-  display: flex;
-  flex-direction: column;
-} */
+
 </style>
