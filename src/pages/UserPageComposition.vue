@@ -18,7 +18,7 @@
 
     <post-list :posts="sortedAndSearchedPosts" v-if="!isPostLoading" />
     <div v-else>Loading...</div>
-    <!-- <div v-intersection="loadMorePosts" class="h-30 bg-blue-500"></div> -->
+    <div v-intersection="loadMorePosts" class="h-30 bg-blue-500"></div>
   </div>
 </template>
 
@@ -32,6 +32,8 @@ import { usePosts } from "@/hooks/usePosts";
 import useSortedPosts from "@/hooks/useSortedPosts";
 import useSortedAndSearchedPosts from "@/hooks/useSortedAndSearchedPosts";
 import useErrorHandlingAndLoading from "@/hooks/useErrorHandlingAndLoading";
+import axios from "axios";
+import { ref } from "vue";
 
 export default {
   components: {
@@ -57,6 +59,30 @@ export default {
     const { sortedPosts, selectedSort } = useSortedPosts(posts);
     const { searchQuery, sortedAndSearchedPosts } =
       useSortedAndSearchedPosts(sortedPosts);
+    const page = ref(1);
+    const limit = ref(10);
+    const totalPage = ref(0);
+    const loadMorePosts = async () => {
+      try {
+        page.value += 1;
+
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/posts",
+          {
+            params: {
+              _page: page.value,
+              _limit: limit.value,
+            },
+          }
+        );
+        totalPage.value = Math.ceil(
+          response.headers["x-total-count"] / limit.value
+        );
+        posts.value = [...posts.value, ...response.data];
+      } catch (error) {
+        alert("Error");
+      }
+    };
     return {
       isLoading,
       posts,
@@ -66,6 +92,7 @@ export default {
       selectedSort,
       searchQuery,
       sortedAndSearchedPosts,
+      loadMorePosts,
     };
   },
 };
