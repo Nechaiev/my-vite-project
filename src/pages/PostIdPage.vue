@@ -16,7 +16,7 @@
 
 <script setup>
 
-import usePostFetcher from "@/composables/useFetch.js";
+import usePostFetcher from "@/composables/postFetcher.js";
 const { post, loading } = usePostFetcher();
 
 </script>

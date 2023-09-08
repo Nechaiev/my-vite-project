@@ -28,7 +28,7 @@ import PostForm from "@/components/PostForm.vue";
 import PostList from "@/components/PostList.vue";
 import MySelect from "@/components/UI/MySelect.vue";
 import MyInput from "@/components/UI/MyInput.vue";
-import { usePosts } from "@/hooks/usePosts";
+import { useFetchPosts } from "@/hooks/useFetchPosts";
 import useSortedPosts from "@/hooks/useSortedPosts";
 import useSortedAndSearchedPosts from "@/hooks/useSortedAndSearchedPosts";
 import useErrorHandlingAndLoading from "@/hooks/useErrorHandlingAndLoading";
@@ -55,7 +55,7 @@ export default {
   setup(props) {
     const { isLoading, handleError, startLoading, toast } =
       useErrorHandlingAndLoading();
-    const { posts, totalPages, isPostLoading } = usePosts(10);
+    const { posts, totalPages, isPostLoading } = useFetchPosts(10);
     const { sortedPosts, selectedSort } = useSortedPosts(posts);
     const { searchQuery, sortedAndSearchedPosts } =
       useSortedAndSearchedPosts(sortedPosts);
