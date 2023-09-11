@@ -2,7 +2,7 @@ import axios from "axios";
 import { ref, onMounted } from 'vue';
 import { useToast } from 'vue-toastification';
 
-export function usePosts(limit) {
+export function useFetchPosts(limit) {
   const posts = ref([]);
   const totalPages = ref(0);
   const isPostsLoading = ref(true);
